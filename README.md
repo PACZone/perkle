@@ -10,11 +10,11 @@ You can find detailed documents about this on [Pactus documentations](https://do
 
 | language              | status            | link |
 |-----------------------|-------------------|------|
-| Golang                | work in progress🚧 |      |
-| Rust                  | work in progress🚧 |      |
-| C/C++                 | work in progress🚧 |      |
-| Python                | work in progress🚧 |      |
-| Javascript/TypeScript | work in progress🚧 |      |
+| Rust                  | work in progress🚧 |   [🔗](./rust-perkle/)   |
+| Golang                | Not Planned🤷 |      |
+| C/C++                 | Not Planned🤷 |      |
+| Python                | Not Planned🤷 |      |
+| Javascript/TypeScript | Not Planned🤷 |      |
 
 > Feel free to make a new PR and add new languages in the list or add new implementations. All contributions are welcomed.
 
