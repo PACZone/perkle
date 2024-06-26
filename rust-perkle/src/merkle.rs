@@ -2,10 +2,11 @@ use std::collections::HashMap;
 
 use crate::Hasher;
 
+#[derive(Clone, Debug, Copy)]
 struct Node<T: Hasher> {
     width: usize,
     height: usize,
-    hasher: T::Hash,
+    hashe: Option<T::Hash>,
 }
 
 pub struct Tree<T: Hasher> {
@@ -16,10 +17,8 @@ pub struct Tree<T: Hasher> {
     hasher: T,
 }
 
-impl<T: Hasher> Node<T> {
-    fn node_id(&self) -> usize {
-        ((self.height & 0xff) << 24) | (self.width & 0xffffff)
-    }
+fn node_id(width: usize, height: usize) -> usize {
+    ((height & 0xff) << 24) | (width & 0xffffff)
 }
 
 impl<T: Hasher> Tree<T> {
@@ -30,5 +29,25 @@ impl<T: Hasher> Tree<T> {
             max_height: 0,
             hasher,
         }
+    }
+
+    fn get_node(&self, node_id: usize) -> Option<&Node<T>> {
+        self.nodes.get(&node_id)
+    }
+
+    fn get_or_create_node(&mut self, width: usize, height: usize) -> Option<&Node<T>> {
+        let node_id = node_id(width, height);
+        let node = self.get_node(node_id);
+        if let Some(n) = node {
+            return Some(n);
+        }
+
+        let new_node = &Node {
+            width,
+            height,
+            hashe: None,
+        };
+
+        // self.nodes.insert(node_id, new_node).as_ref() //! Compiler error.
     }
 }
