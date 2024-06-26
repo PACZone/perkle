@@ -42,12 +42,12 @@ impl<T: Hasher> Tree<T> {
             return Some(n);
         }
 
-        let new_node = &Node {
+        let new_node = Node {
             width,
             height,
             hashe: None,
         };
 
-        // self.nodes.insert(node_id, new_node).as_ref() //! Compiler error.
+        self.nodes.insert(node_id, new_node).as_ref()
     }
 }
