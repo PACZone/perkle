@@ -48,6 +48,6 @@ impl<T: Hasher> Tree<T> {
             hashe: None,
         };
 
-        self.nodes.insert(node_id, new_node).as_ref()
+        // self.nodes.insert(node_id, new_node).as_ref() //! Compiler error.
     }
 }
